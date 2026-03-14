@@ -12,7 +12,6 @@
 <body>
     <div id="spotlight"></div>
     
-    <!-- Auth Modal -->
     <div id="auth-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center px-4">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleAuth()"></div>
         <div class="glass w-full max-w-md p-10 rounded-[40px] border border-white/10 relative z-10 animate-in fade-in zoom-in duration-300">
@@ -25,7 +24,7 @@
                     <input type="email" placeholder="Hospital Email" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
                     <input type="password" placeholder="Password" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
                 </div>
-                <button onclick="handleAuth('login')" class="w-full bg-teal-400 text-black py-4 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(45,212,191,0.4)] transition-all">Sign In</button>
+                <button onclick="handleAuth('login')" class="w-full bg-teal-400 text-black py-4 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all">Sign In</button>
                 <p class="text-center text-xs text-gray-500">Don't have an account? <button onclick="switchAuth()" class="text-teal-400 font-bold">Register Hospital</button></p>
             </div>
 
@@ -37,13 +36,12 @@
                     <input type="email" id="reg-email" placeholder="Work Email" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
                     <input type="password" id="reg-pass" placeholder="Create Password" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
                 </div>
-                <button onclick="handleAuth('register')" class="w-full bg-teal-400 text-black py-4 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(45,212,191,0.4)] transition-all">Create Account</button>
+                <button onclick="handleAuth('register')" class="w-full bg-teal-400 text-black py-4 rounded-xl font-bold hover:shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all">Create Account</button>
                 <p class="text-center text-xs text-gray-500">Already registered? <button onclick="switchAuth()" class="text-teal-400 font-bold">Sign In</button></p>
             </div>
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-[100] glass py-4 px-8 md:px-16 flex justify-between items-center">
         <div class="flex items-center gap-2 cursor-pointer" onclick="navigateTo('index.html')">
             <div class="bg-teal-400 p-1.5 rounded-lg text-black"><i data-lucide="activity" class="w-5 h-5"></i></div>
@@ -61,7 +59,6 @@
         </div>
     </nav>
 
-    <!-- Predict Section -->
     <main class="pt-24">
         <section class="min-h-screen px-8 md:px-16 py-20 max-w-7xl mx-auto">
             <div class="text-center mb-12">
@@ -69,79 +66,74 @@
                 <p class="text-gray-400">Comprehensive monitoring for hospitalized and discharged patients.</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
                 <div class="lg:col-span-7 glass p-10 rounded-[40px] border border-white/10 space-y-8">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Primary Condition</label>
-                            <select id="disease-type" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
-                                <option value="Cardiovascular">Cardiovascular Disease</option>
-                                <option value="Diabetes">Diabetes Mellitus (Type II)</option>
-                                <option value="Respiratory">Chronic Respiratory (COPD/Asthma)</option>
-                                <option value="Renal">Renal Failure / Kidney Disease</option>
-                            </select>
+                    
+                    <div class="p-6 bg-white/5 rounded-3xl border border-white/10 space-y-4 mb-8">
+                        <h3 class="text-teal-400 font-bold text-sm uppercase tracking-widest">BMI Calculator</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Height (cm)</label>
+                                <input type="number" id="calc-height" placeholder="170" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Weight (kg)</label>
+                                <input type="number" id="calc-weight" placeholder="70" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Admission Status</label>
-                            <select id="admission-status" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
-                                <option>Recently Discharged</option>
-                                <option>Current Inpatient</option>
-                                <option>Outpatient</option>
-                            </select>
-                        </div>
+                        <button onclick="calculateBMI()" class="w-full bg-white/10 text-white py-3 rounded-xl font-bold text-sm hover:bg-white/20 transition-all border border-white/10">Calculate & Apply BMI</button>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="space-y-2 md:col-span-2">
+                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Patient Full Name</label>
+                            <input type="text" id="patient-name" placeholder="e.g., Sarah Smith" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm text-white">
+                        </div>
                         <div class="space-y-2">
                             <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Patient Age</label>
                             <input type="number" id="patient-age" placeholder="45" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
                         </div>
                         <div class="space-y-2">
                             <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Gender</label>
-                            <select id="patient-gender" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
-                                <option>Male</option>
-                                <option>Female</option>
+                            <select id="patient-gender" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm [&>option]:text-black">
+                                <option value="Female">Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Systolic BP</label>
+                            <input type="number" id="sys-bp" placeholder="120" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Diastolic BP</label>
+                            <input type="number" id="dia-bp" placeholder="80" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Cholesterol (mg/dL)</label>
+                            <input type="number" id="cholesterol" placeholder="200" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Computed BMI</label>
+                            <input type="number" id="computed-bmi" placeholder="0.0" readonly class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none text-sm text-teal-400 font-bold cursor-not-allowed">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Diabetes History</label>
+                            <select id="diabetes" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm [&>option]:text-black">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Hypertension History</label>
+                            <select id="hypertension" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 outline-none focus:border-teal-400 text-sm [&>option]:text-black">
+                                <option value="No">No</option>
+                                <option value="Yes">Yes</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="space-y-2">
-                            <label class="text-[10px] uppercase font-bold text-gray-500 tracking-widest ml-1">Upload Patient Data (CSV/Excel)</label>
-                            <div class="relative">
-                                <input type="file" id="patient-data-file" accept=".csv,.xlsx,.xls" class="hidden" onchange="handleFileUpload(event)">
-                                <label for="patient-data-file" class="w-full bg-white/5 border border-white/10 rounded-xl p-4 cursor-pointer hover:border-teal-400 transition-all flex items-center justify-between group">
-                                    <span class="text-sm text-gray-400 group-hover:text-gray-300" id="file-name">Choose file or drag & drop</span>
-                                    <i data-lucide="upload" class="w-5 h-5 text-gray-500 group-hover:text-teal-400"></i>
-                                </label>
-                            </div>
-                            <p class="text-[10px] text-gray-600 ml-1">Supported formats: CSV, XLSX, XLS</p>
-                        </div>
-                        
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <div class="flex justify-between mb-2">
-                                <label class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">Systolic Blood Pressure</label>
-                                <span class="text-teal-400 text-xs font-bold" id="bp-val">120 mmHg</span>
-                            </div>
-                            <input type="range" min="80" max="220" value="120" class="w-full accent-teal-400" oninput="document.getElementById('bp-val').innerText = this.value + ' mmHg'">
-                        </div>
-                        <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                            <div class="flex justify-between mb-2">
-                                <label class="text-[10px] uppercase font-bold text-gray-400 tracking-widest">BMI Index</label>
-                                <span class="text-teal-400 text-xs font-bold" id="bmi-val">24</span>
-                            </div>
-                            <input type="range" min="15" max="45" value="24" class="w-full accent-teal-400" oninput="document.getElementById('bmi-val').innerText = this.value">
-                        </div>
-                    </div>
-
-                    <div class="p-6 bg-teal-400/5 rounded-3xl border border-teal-400/10">
-                        <label class="text-[10px] uppercase font-bold text-teal-400 block mb-4 tracking-widest">Post-Discharge Monitoring Frequency</label>
-                        <input type="range" min="1" max="4" value="1" class="w-full accent-teal-400">
-                        <div class="flex justify-between text-[8px] text-gray-600 uppercase font-bold mt-2">
-                            <span>Weekly</span><span>Daily</span><span>6 Hours</span><span>Hourly</span>
-                        </div>
-                    </div>
-
-                    <button onclick="runAnalysis()" id="analyze-btn" class="w-full bg-teal-400 text-black py-5 rounded-2xl font-bold text-lg hover:shadow-[0_0_30px_rgba(45,212,191,0.5)] transition-all flex justify-center items-center gap-2">
+                    <button onclick="runAnalysis()" id="analyze-btn" class="w-full bg-teal-400 text-black py-5 rounded-2xl font-bold text-lg hover:shadow-[0_0_30px_rgba(96,165,250,0.5)] transition-all flex justify-center items-center gap-2">
                         Analyze & Generate Report <i data-lucide="file-text" class="w-5 h-5"></i>
                     </button>
                     
@@ -156,10 +148,9 @@
                         <p class="text-gray-500 text-sm">Provide patient EHR data and vitals to generate a clinical AI report.</p>
                     </div>
                     
-                    <!-- Care & Precautions Section -->
                     <div id="care-precautions-section" class="hidden glass p-8 rounded-[40px] border border-white/10 animate-in fade-in duration-500">
                         <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 bg-teal-500/20 rounded-xl flex items-center justify-center">
+                            <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
                                 <i data-lucide="heart-handshake" class="w-6 h-6 text-teal-400"></i>
                             </div>
                             <div>
@@ -167,13 +158,9 @@
                                 <p class="text-xs text-gray-400">Personalized recommendations</p>
                             </div>
                         </div>
-                        
-                        <div id="care-content" class="space-y-4">
-                            <!-- Content will be dynamically generated -->
-                        </div>
+                        <div id="care-content" class="space-y-4"></div>
                     </div>
                     
-                    <!-- High Risk Suggestions Section (Hidden by default) -->
                     <div id="high-risk-suggestions" class="hidden glass p-8 rounded-[40px] border border-red-500/30 bg-red-500/5 animate-in fade-in duration-500">
                         <div class="flex items-center gap-3 mb-6">
                             <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
@@ -186,81 +173,33 @@
                         </div>
                         
                         <div class="space-y-4">
+                            <div class="p-4 bg-white/5 rounded-2xl border border-red-500/20">
+                                <h4 class="font-bold text-sm text-red-300 mb-2 flex items-center gap-2"><i data-lucide="activity" class="w-4 h-4"></i> Causes & Triggered Factors</h4>
+                                <ul id="dynamic-causes" class="text-xs text-gray-300 space-y-1 list-disc pl-4"></ul>
+                            </div>
+
                             <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
-                                <div class="flex items-start gap-3">
-                                    <i data-lucide="phone-call" class="w-5 h-5 text-red-400 mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <p class="font-bold text-sm mb-1">Contact Healthcare Provider</p>
-                                        <p class="text-xs text-gray-400">Notify physician immediately for urgent medical evaluation and intervention.</p>
+                                <h4 class="font-bold text-sm text-blue-300 mb-2 flex items-center gap-2"><i data-lucide="shield-check" class="w-4 h-4"></i> Actionable Recommendations</h4>
+                                <ul id="dynamic-recommendations" class="text-xs text-gray-300 space-y-1 list-disc pl-4"></ul>
+                            </div>
+
+                            <div id="hospital-suggestions" class="hidden p-4 bg-teal-500/10 rounded-2xl border border-teal-500/20">
+                                <h4 class="font-bold text-sm text-teal-300 mb-3 flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Nearby Emergency Care</h4>
+                                <div id="hospital-list" class="space-y-3">
+                                    <div class="animate-pulse flex space-x-4">
+                                        <div class="flex-1 space-y-2 py-1">
+                                            <div class="h-2 bg-white/10 rounded"></div>
+                                            <div class="h-2 bg-white/10 rounded w-5/6"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
-                                <div class="flex items-start gap-3">
-                                    <i data-lucide="activity" class="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <p class="font-bold text-sm mb-1">Continuous Monitoring</p>
-                                        <p class="text-xs text-gray-400">Set up hourly vital sign monitoring. Track blood pressure, heart rate, and oxygen saturation every 60 minutes.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
-                                <div class="flex items-start gap-3">
-                                    <i data-lucide="hospital" class="w-5 h-5 text-yellow-400 mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <p class="font-bold text-sm mb-1">Consider Hospitalization</p>
-                                        <p class="text-xs text-gray-400">Evaluate need for inpatient care or emergency department visit based on current symptoms and risk factors.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
-                                <div class="flex items-start gap-3">
-                                    <i data-lucide="pill" class="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <p class="font-bold text-sm mb-1">Medication Review</p>
-                                        <p class="text-xs text-gray-400">Review current medications with healthcare provider. May require dosage adjustments or additional prescriptions.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
-                                <div class="flex items-start gap-3">
-                                    <i data-lucide="heart-pulse" class="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <p class="font-bold text-sm mb-1">Lifestyle Modifications</p>
-                                        <p class="text-xs text-gray-400">Implement immediate dietary changes, reduce physical stress, and ensure adequate rest. Avoid strenuous activities.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="p-4 bg-white/5 rounded-2xl border border-white/10">
-                                <div class="flex items-start gap-3">
-                                    <i data-lucide="calendar-check" class="w-5 h-5 text-teal-400 mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <p class="font-bold text-sm mb-1">Follow-up Schedule</p>
-                                        <p class="text-xs text-gray-400">Schedule follow-up appointment within 24-48 hours. Do not delay seeking medical attention if symptoms worsen.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-6 p-4 bg-red-500/10 rounded-xl border border-red-500/20">
-                            <p class="text-xs text-red-300 font-medium">
-                                <i data-lucide="info" class="w-4 h-4 inline mr-2"></i>
-                                <strong>Emergency:</strong> If experiencing chest pain, difficulty breathing, severe dizziness, or loss of consciousness, call emergency services immediately.
-                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
-
-    <script src="js/main.js"></script>
 </body>
+
 </html>
-
-
